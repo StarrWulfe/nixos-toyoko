@@ -3,7 +3,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
+      ./hardware-configuration.nix
     ];
 
   # Bootloader.
@@ -44,11 +44,11 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  #services.displayManager.gdm.enable = true;
+  services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
   # Lets use ly, a TUI greeter.
-  services.displayManager.ly.enable = true;
+  #services.displayManager.ly.enable = true;
   
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -85,6 +85,7 @@
        bitwarden
        vscodium
        beeper
+       go-chromecast
     ];
   };
 
