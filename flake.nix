@@ -13,6 +13,13 @@
   outputs = { self, nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
+      overlays = [
+        (final: prev: {
+          python3Packages = prev.python3Packages // {
+            youtube-dl = final.yt-dlp;
+          };
+        })
+      ];
     in {
       nixosConfigurations.toyoko = nixpkgs.lib.nixosSystem {
         inherit system;
