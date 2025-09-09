@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -41,6 +42,7 @@
         inherit system;
         modules = [
           ./configuration.nix
+          nixos-hardware.nixosModules.framework-16-7040-amd
           home-manager.nixosModules.home-manager
           {
             nixpkgs.overlays = [ overlay-ytfix ];
