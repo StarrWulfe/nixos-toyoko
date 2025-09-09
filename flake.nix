@@ -32,7 +32,7 @@
       homeConfigurations.toyoko = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ./home.nix
+          ./modules/home/default.nix
         ];
       };
 
@@ -46,7 +46,7 @@
             nixpkgs.overlays = [ overlay-ytfix ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.j7 = import ./home.nix;
+            home-manager.users.j7 = import ./modules/home/default.nix;
           }
         ];
       };
