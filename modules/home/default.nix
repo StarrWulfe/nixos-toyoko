@@ -37,12 +37,14 @@
     fx-cast-bridge
     ytfzf
     yt-dlp
-    mkchromecast
     go-chromecast
     localsend
     bitwarden
     vscodium
     beeper
+    yazi  
+    google-chrome
+    onlyoffice
 
     # CLI and dev tools (moved from system)
     neovim
@@ -56,5 +58,6 @@
     zoxide
     zellij
     git
+  
   ];
 }
