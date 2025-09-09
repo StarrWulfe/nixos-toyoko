@@ -14,7 +14,6 @@
     let
       system = "x86_64-linux";
 
-      # Overlay to replace youtube-dl with yt-dlp everywhere
       overlay-ytfix = (final: prev: {
         youtube-dl = final.yt-dlp;
         python3Packages = prev.python3Packages // {
@@ -22,13 +21,12 @@
         };
       });
 
-      # Shared package set with overlay applied
       pkgs = import nixpkgs {
         inherit system;
         overlays = [ overlay-ytfix ];
       };
     in {
-      # Home Manager standalone config
+      # Standalone Home Manager config
       homeConfigurations.toyoko = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
@@ -36,7 +34,7 @@
         ];
       };
 
-      # NixOS system config (with Home Manager as a module)
+      # NixOS system config with Home Manager as a module
       nixosConfigurations.toyoko = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
