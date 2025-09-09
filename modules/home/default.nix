@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  home.stateVersion = "25.05";
-
   home.username = "j7";
   home.homeDirectory = "/home/j7";
 
