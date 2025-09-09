@@ -44,7 +44,7 @@
     beeper
     yazi  
     google-chrome
-    onlyoffice
+    onlyoffice-bin
 
     # CLI and dev tools (moved from system)
     neovim
