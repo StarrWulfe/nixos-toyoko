@@ -1,11 +1,9 @@
 {
   description = "NixOS + Home Manager (modular setup)";
 
-  
   inputs = {
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,12 +22,11 @@
       #   };
       # });
 
-      # # Shared package set with overlay applied
+      # Shared package set with overlay applied
       # pkgs = import nixpkgs {
       #   inherit system;
       #   overlays = [ overlay-ytfix ];
       # };
-
 
     in {
       # Standalone Home Manager config
