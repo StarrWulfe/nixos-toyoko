@@ -17,6 +17,9 @@
   # Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Flatpaks
+  services.flatpak.enable = true;
+
   # Locale/time
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
