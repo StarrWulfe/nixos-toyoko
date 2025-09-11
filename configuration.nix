@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ 
+    ./hardware-configuration.nix
+    # <nixos-hardware/framework-16-7040-amd>
+    ];
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
@@ -44,6 +47,12 @@
   services.xserver.xkb = {
     layout = "us";
     variant = "";
+  };
+
+  # Firmware Update Service
+  services.fwupd = {
+    enable = true;
+    extraRemotes = [ "lvfs-testing" ]; #Framework still testing
   };
 
   # Printing

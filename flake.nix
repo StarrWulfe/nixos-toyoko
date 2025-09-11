@@ -1,9 +1,10 @@
 {
   description = "NixOS + Home Manager (modular setup)";
 
+  
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -11,7 +12,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }:
     let
       system = "x86_64-linux";
 
@@ -47,7 +48,6 @@
           nixos-hardware.nixosModules.framework-16-7040-amd 
           home-manager.nixosModules.home-manager
           {
-            nixpkgs.overlays = [ overlay-ytfix ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.j7 = import ./modules/home/default.nix;
