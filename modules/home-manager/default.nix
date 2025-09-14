@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    stylix.homeManagerModules.stylix
+  ];
+
   home.stateVersion = "25.05";
 
   home.username = "j7";
@@ -56,12 +60,10 @@
     zoxide
     zellij
     git
-    
 
     # Bleeding edge from unstable (not sure if that overlay in flake.nix is needed)
-    pkgsUnstable = [
-      yazi
-      ghostty
-      gemini-cli
-    ];
+    pkgsUnstable.yazi
+    pkgsUnstable.ghostty
+  
+  ];
 }
