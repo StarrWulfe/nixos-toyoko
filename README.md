@@ -25,8 +25,8 @@ use a profiles/hosts layout and make modules available as templates.
 - Desktop profiles live under `profiles/desktop/`. To switch a host's
   desktop, edit `hosts/<host>/default.nix` and change the imported
   desktop profile (e.g., `../../profiles/desktop/gnome.nix` ->
-  `../../profiles/desktop/xfce.nix`). 
-  [TODO] Alternatively, create a small
+  `../../profiles/desktop/xfce.nix`).
+   - [TODO] Alternatively, create a small
   `variables.nix` for the host and make hosts import the desired profile based
   on that variable (ZaneyOS-style).
 
@@ -45,9 +45,9 @@ use a profiles/hosts layout and make modules available as templates.
   `nixos-rebuild build --flake .#insert-host-name`
 
 #### Still to come:
-[ ] wire in a good Hyprland config.
-[ ] put my '.configs' into Home-Manager.
-[ ] test the Darwin-Nix setup with my Macbook Pro.
-[ ] make a self-hosting host/profile so I can serve with NixOS too
- - Do I make LXDs, VMs for Proxmox, or do I do a whole bare-metal server? 🤔
+- [ ] wire in a good Hyprland config.
+- [ ] put my '.configs' into Home-Manager.
+- [ ] test the Darwin-Nix setup with my Macbook Pro.
+- [ ] make a self-hosting host/profile so I can serve with NixOS too
+ - [ ] Do I make LXDs, VMs for Proxmox, or do I do a whole bare-metal server? 🤔
 
