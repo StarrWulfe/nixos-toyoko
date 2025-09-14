@@ -1,7 +1,10 @@
-
-{ config, pkgs, ... }:
+{ config, pkgs, home-manager, pkgsUnstable, ... }:
 
 {
+  imports = [
+    home-manager.nixosModules.home-manager
+  ];
+
   # Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -20,12 +23,17 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # User (no per-user packages here)
+  # User
   users.users.j7 = {
     isNormalUser = true;
     description = "StarrWulfe";
     extraGroups = [ "networkmanager" "wheel" ];
   };
+
+  # Home Manager
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.users.j7 = (import ../../modules/home-manager/default.nix) { inherit config pkgs pkgsUnstable; };
 
   # Allow unfree
   nixpkgs.config.allowUnfree = true;

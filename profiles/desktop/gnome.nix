@@ -5,6 +5,8 @@
     stylix.nixosModules.stylix
   ];
 
+  qt.platformTheme = "adwaita";
+
   stylix = {
     enable = true;
     image = ../../modules/nixos/wallpaper.png;
@@ -22,6 +24,10 @@
         package = pkgs.nerd-fonts.overpass;
         name = "Overpass Nerd font";
       };
+    };
+    targets.qt = {
+      enable = true;
+      platform = "qtct";
     };
   };
 

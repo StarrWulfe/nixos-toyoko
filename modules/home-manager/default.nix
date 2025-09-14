@@ -1,9 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgsUnstable, ... }:
 
 {
-  imports = [
-    stylix.homeManagerModules.stylix
-  ];
+  # imports = [
+  #   stylix.homeManagerModules.stylix
+  # ];
 
   home.stateVersion = "25.05";
 
@@ -64,6 +64,7 @@
     # Bleeding edge from unstable (not sure if that overlay in flake.nix is needed)
     pkgsUnstable.yazi
     pkgsUnstable.ghostty
+    pkgsUnstable.gemini-cli
   
   ];
 }
