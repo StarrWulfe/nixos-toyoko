@@ -11,11 +11,14 @@
     stylix.url = "github:danth/stylix";
     disko.url = "github:nix-community/disko";
     nixos-anywhere.url = "github:nix-community/nixos-anywhere";
+    nh.url = "github:viperML/nh";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nix-darwin, home-manager, stylix, disko, nixos-anywhere, ... }@inputs: 
+  outputs = { self, nixpkgs, nixpkgs-unstable, nix-darwin, home-manager, stylix, disko, nixos-anywhere, nh, ... }@inputs:
   let
-    pkgsUnstable = import nixpkgs-unstable { system = "x86_64-linux"; };
+    system = "x86_64-linux";
+    pkgs = import nixpkgs { inherit system; };
+    pkgsUnstable = import nixpkgs-unstable { inherit system; };
   in {
     nixosConfigurations = {
       toyoko = nixpkgs.lib.nixosSystem {
@@ -40,6 +43,29 @@
         system = "x86_64-darwin";
         specialArgs = { inherit inputs stylix home-manager pkgsUnstable; };
         modules = [ ./hosts/gohan3/default.nix ];
+      };
+    };
+
+    homeConfigurations = {
+      toyoko = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        extraSpecialArgs = { inherit inputs stylix pkgsUnstable; };
+        modules = [ ./modules/home-manager/default.nix ];
+      };
+      virtua = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        extraSpecialArgs = { inherit inputs stylix pkgsUnstable; };
+        modules = [ ./modules/home-manager/default.nix ];
+      };
+      randall = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        extraSpecialArgs = { inherit inputs stylix pkgsUnstable; };
+        modules = [ ./modules/home-manager/default.nix ];
+      };
+      gohan3 = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-darwin";
+        extraSpecialArgs = { inherit inputs stylix pkgsUnstable; };
+        modules = [ ./modules/home-manager/default.nix ];
       };
     };
   };

@@ -1,9 +1,9 @@
 { config, pkgs, pkgsUnstable, ... }:
 
 {
-  # imports = [
-  #   stylix.homeManagerModules.stylix
-  # ];
+  imports = [
+    stylix.homeManagerModules.stylix
+  ];
 
   home.stateVersion = "25.05";
 

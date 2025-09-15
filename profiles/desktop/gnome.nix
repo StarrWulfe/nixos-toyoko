@@ -9,7 +9,8 @@
 
   stylix = {
     enable = true;
-    image = ../../modules/nixos/wallpaper.png;
+    # image = ../../modules/wallpapers/wallpaper.png; # Default background
+    image = ../../modules/wallpapers/Kirby-NixOS.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     fonts = {
       serif = {
@@ -17,12 +18,12 @@
         name = "Noto Serif";
       };
       sansSerif = {
-        package = pkgs.noto-fonts;
+        package = pkgs.fonts.Overpass;
         name = "Noto Sans";
       };
       monospace = {
-        package = pkgs.nerd-fonts.overpass;
-        name = "Overpass Nerd font";
+        package = pkgs.nerd-fonts-complete;
+        name = "Overpass Nerd Font";
       };
     };
     targets.qt = {

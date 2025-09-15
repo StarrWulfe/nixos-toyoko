@@ -33,7 +33,10 @@
   # Home Manager
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users.j7 = (import ../../modules/home-manager/default.nix) { inherit config pkgs pkgsUnstable; };
+  home-manager.users.j7 = (import ../../modules/home-manager/default.nix) { 
+    inherit config pkgs pkgsUnstable; 
+    programs.bash.enable = true;
+  };
 
   # Allow unfree
   nixpkgs.config.allowUnfree = true;
